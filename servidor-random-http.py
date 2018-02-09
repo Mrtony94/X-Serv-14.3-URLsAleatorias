@@ -16,16 +16,15 @@ try:
         print('Request received:')
         print(recvSocket.recv(2048))
         print('Answering back...')
-        url = str(random.randint(1, 1000000000000))
-        recvSocket.send(bytes("HTTP/1.1 200 OK\r\n\r\n' +
-                              '<a href ="http://localhost:1234/' +
-                              url +
-                              '" >Dame otra <a/>' +
-                              "</p>" +
-                              '</body></html>', 'utf-8'))
+        url = random.randint(1, 1000000000000)
+        recvSocket.send(bytes('HTTP/1.1 200 Ok \r\n\r\n' +
+                        '<html><body><h1>Hola.</h1>' +
+                        '<a href="http://localhost:1234/' +
+                        str(url) +
+                        '" >Dame otra<a/>' +
+                        "</p>" +
+                        '</body></html>', 'utf-8'))
         recvSocket.close()
 except KeyboardInterrupt:
     print("Closing binded socket")
     mySocket.close()
-   
-    
